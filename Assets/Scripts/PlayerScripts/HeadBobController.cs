@@ -1,10 +1,12 @@
+using PlayerScripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HeadBobController : MonoBehaviour
 {
     [SerializeField] private float walkingBobbingSpeed = 14f;
     [SerializeField] private float bobbingAmount = 0.05f;
-    [SerializeField] private PlayerController controller;
+    [SerializeField] private PlayerControllerFPS controllerFPS;
 
     private float _defaultPosY;
     private float _timer;
@@ -17,7 +19,7 @@ public class HeadBobController : MonoBehaviour
     
     void Update()
     {
-        if(Mathf.Abs(controller.MoveDirection.x) > 0.1f || Mathf.Abs(controller.MoveDirection.z) > 0.1f)
+        if(Mathf.Abs(controllerFPS.MoveDirection.x) > 0.1f || Mathf.Abs(controllerFPS.MoveDirection.z) > 0.1f)
         {
             //Player is moving
             _timer += Time.deltaTime * walkingBobbingSpeed;

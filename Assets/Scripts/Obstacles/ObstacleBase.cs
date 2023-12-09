@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class ObstacleBase : MonoBehaviour
@@ -7,8 +9,7 @@ public class ObstacleBase : MonoBehaviour
     [SerializeField] private Transform obstacleTransform;
     [SerializeField] private float startValue;
     [SerializeField] private float endValue;
-    [SerializeField] private float firstHalfDuration;
-    [SerializeField] private float secondHalfDuration;
+    [SerializeField] private Tween sequence;
     void Start()
     {
         
@@ -19,4 +20,5 @@ public class ObstacleBase : MonoBehaviour
     {
         
     }
+
 }

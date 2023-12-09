@@ -7,7 +7,4 @@ The existence of multiple checkpoints is not included in the requirements, and I
 
 -I have included 2 scenes and 2 player types for your appraisal, since the original document did not mention any camera perspectives or use of special effects. You may find them as seperate scene implementations as FPS and Top Down scenes.
 
--I plan to add improvements to the project that go beyond the requirements of the assesment since I have come up with some ideas regarding better presentation and short narrative.
-I will make sure to have such a project in a seperate repository, as I do not wish to move beyond the scope of the project without review or oversight (I find this to be a useful philosophy when dealing with any team size larger than one)
-
 Of course, I would love to discuss what new features could be implemented over this template, and what would the theoratical technicalities be, and therefore look forward to your review of the project.

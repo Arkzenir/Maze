@@ -11,10 +11,12 @@ namespace PlayerScripts
         {
             _lastCheckpoint = c;
         }
-
+        
         private void ResetPlayerToCheckpoint()
         {
             ResetPlayerPosition();
+            //A more complex project would have several method calls from different systems in here
+            //E.g: Health, enemy managers, intro/exit sequences
         }
 
         private void ResetPlayerPosition()

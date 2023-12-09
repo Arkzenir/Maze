@@ -23,13 +23,7 @@ namespace PlayerScripts
             get => _moveDirection;
             private set => _moveDirection = value;
         }
-        public Vector2 Rotation{
-            get => _rotation;
-            private set => _rotation = value;
-        }
-
         
-
         void Start()
         {
             CharacterController = GetComponent<CharacterController>();

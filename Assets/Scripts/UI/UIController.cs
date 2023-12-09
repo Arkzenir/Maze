@@ -20,16 +20,17 @@ namespace UI
 
         private void Update()
         {
+            //Skip intro
             if (Input.anyKeyDown && !playerBase.GameOver)
             {
                 GameStartPanelControl();
             }
-            
+            //Show finish panel
             if (playerBase.GameOver && !finishPanel.activeSelf)
             {
                 GameOverPanelControl();
             }
-            
+            //Exit
             if (playerBase.GameOver && Input.GetKeyDown(KeyCode.Escape))
             {
                 Application.Quit(0);

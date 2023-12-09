@@ -11,6 +11,7 @@ namespace PlayerScripts
         {
             if (other != null && other.gameObject.CompareTag("Player"))
             {
+                //The player systems handle checkpoint behaviour
                 var p = other.gameObject.GetComponent<PlayerBase>();
                 p.SetCheckpoint(checkpointTransform);
             }

@@ -41,6 +41,7 @@ namespace UI
         {
             blackout.SetActive(false);
             introPanel.SetActive(false);
+            playerControllerBase.SetCanMove(true);
         }
 
         private void GameOverPanelControl()

@@ -5,8 +5,19 @@ namespace PlayerScripts
 {
     public class PlayerBase : MonoBehaviour
     {
+        private Transform _defaultCheckpoint;
         private Transform _lastCheckpoint;
         public bool GameOver { get; private set; }
+
+        private void Start()
+        {
+            //The default checkpoint should be the starting point for the player.
+            //In this project it is a simple assigment of its starting value
+            //But it could utilise a serialized value as well.
+            _defaultCheckpoint = transform;
+            _lastCheckpoint = _defaultCheckpoint;
+        }
+
         public void SetCheckpoint(Transform c)
         {
             _lastCheckpoint = c;

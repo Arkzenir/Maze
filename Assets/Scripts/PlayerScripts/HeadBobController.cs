@@ -1,35 +1,36 @@
-using PlayerScripts;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class HeadBobController : MonoBehaviour
+namespace PlayerScripts
 {
-    [SerializeField] private float walkingBobbingSpeed = 14f;
-    [SerializeField] private float bobbingAmount = 0.05f;
-    [SerializeField] private PlayerControllerFPS controllerFPS;
+    public class HeadBobController : MonoBehaviour
+    {
+        [SerializeField] private float walkingBobbingSpeed = 14f;
+        [SerializeField] private float bobbingAmount = 0.05f;
+        [SerializeField] private PlayerControllerFPS controllerFPS;
 
-    private float _defaultPosY;
-    private float _timer;
+        private float _defaultPosY;
+        private float _timer;
     
-    void Start()
-    {
-        _defaultPosY = transform.localPosition.y;
-        _timer = 0;
-    }
-    
-    void Update()
-    {
-        if(Mathf.Abs(controllerFPS.MoveDirection.x) > 0.1f || Mathf.Abs(controllerFPS.MoveDirection.z) > 0.1f)
+        void Start()
         {
-            //Player is moving
-            _timer += Time.deltaTime * walkingBobbingSpeed;
-            transform.localPosition = new Vector3(transform.localPosition.x, _defaultPosY + Mathf.Sin(_timer) * bobbingAmount, transform.localPosition.z);
-        }
-        else
-        {
-            //Idle
+            _defaultPosY = transform.localPosition.y;
             _timer = 0;
-            transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(transform.localPosition.y, _defaultPosY, Time.deltaTime * walkingBobbingSpeed), transform.localPosition.z);
+        }
+    
+        void Update()
+        {
+            if(Mathf.Abs(controllerFPS.MoveDirection.x) > 0.1f || Mathf.Abs(controllerFPS.MoveDirection.z) > 0.1f)
+            {
+                //Player is moving
+                _timer += Time.deltaTime * walkingBobbingSpeed;
+                transform.localPosition = new Vector3(transform.localPosition.x, _defaultPosY + Mathf.Sin(_timer) * bobbingAmount, transform.localPosition.z);
+            }
+            else
+            {
+                //Idle
+                _timer = 0;
+                transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(transform.localPosition.y, _defaultPosY, Time.deltaTime * walkingBobbingSpeed), transform.localPosition.z);
+            }
         }
     }
 }

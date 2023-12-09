@@ -4,18 +4,16 @@ namespace PlayerScripts
 {
     [RequireComponent(typeof(CharacterController))]
 
-    public class PlayerControllerTopDown : MonoBehaviour
+    public class PlayerControllerTopDown : PlayerControllerBase
     {
         [SerializeField] protected float speed;
-        protected CharacterController CharacterController { get; private set; }
-        protected Vector3 MoveDirection;
-    
-        protected bool CanMove;
+        public CharacterController CharacterController { get; private set; }
+        private Vector3 _moveDirection;
 
         protected virtual void Start()
         {
             CharacterController = GetComponent<CharacterController>();
-            MoveDirection = Vector3.zero;
+            _moveDirection = Vector3.zero;
             CanMove = true;
         }
 
@@ -26,10 +24,10 @@ namespace PlayerScripts
             float curSpeedX = CanMove ? speed * Input.GetAxis("Vertical") : 0;
             float curSpeedY = CanMove ? speed * Input.GetAxis("Horizontal") : 0;
             
-            MoveDirection = (forward * curSpeedX) + (right * curSpeedY);
+            _moveDirection = (forward * curSpeedX) + (right * curSpeedY);
             
             // Move the controller
-            CharacterController.Move(MoveDirection * Time.deltaTime);
+            CharacterController.Move(_moveDirection * Time.deltaTime);
         }
     }
 }

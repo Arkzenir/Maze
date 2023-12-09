@@ -1,28 +1,42 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBase : MonoBehaviour
+namespace PlayerScripts
 {
-    private Transform _lastCheckpoint;
-
-    public void SetCheckpoint(Transform c)
+    public class PlayerBase : MonoBehaviour
     {
-        _lastCheckpoint = c;
-    }
-
-    private void ResetPlayerToCheckpoint()
-    {
-        transform.position = _lastCheckpoint.position;
-        transform.rotation = _lastCheckpoint.rotation;
-    }
-    
-    private void OnCollisionStay(Collision other)
-    {
-        if (other != null && other.gameObject.CompareTag("Obstacle"))
+        private Transform _lastCheckpoint;
+        public bool GameOver { get; private set; }
+        public void SetCheckpoint(Transform c)
         {
-            ResetPlayerToCheckpoint();
+            _lastCheckpoint = c;
+        }
+
+        private void ResetPlayerToCheckpoint()
+        {
+            ResetPlayerPosition();
+        }
+
+        private void ResetPlayerPosition()
+        {
+            transform.position = _lastCheckpoint.position;
+            transform.rotation = _lastCheckpoint.rotation;
+        }
+    
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other != null)
+            {
+                if (other.gameObject.CompareTag("Obstacle"))
+                {
+                    ResetPlayerToCheckpoint();
+                    return;
+                }
+                if (other.gameObject.CompareTag("Finish"))
+                {
+                    GameOver = true;
+                }
+            }
         }
     }
 }

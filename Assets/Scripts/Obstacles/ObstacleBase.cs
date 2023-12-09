@@ -1,24 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class ObstacleBase : MonoBehaviour
+namespace Obstacles
 {
-    [SerializeField] private Transform obstacleTransform;
-    [SerializeField] private float startValue;
-    [SerializeField] private float endValue;
-    [SerializeField] private Tween sequence;
-    void Start()
+    public class ObstacleBase : MonoBehaviour
     {
-        
+        [SerializeField] protected Transform obstacleTransform;
+        [SerializeField] protected Transform startValue;
+        [SerializeField] protected Transform endValue;
+        [SerializeField] protected float stepDuration;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 }
